@@ -128,7 +128,6 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 ## Acknowledgments
 
-- Built for hackathon submission
 - Powered by Bria FIBO API
 - Uses ComfyUI for local AI generation
 - Inspired by the need for procedural game asset creation
