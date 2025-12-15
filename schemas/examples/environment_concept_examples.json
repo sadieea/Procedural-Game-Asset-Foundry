@@ -1,0 +1,237 @@
+{
+  "examples": {
+    "ancient_temple_ruins": {
+      "schemaVersion": "v1",
+      "assetType": "environment_concept",
+      "seed": 456789,
+      "scene": {
+        "type": "ruins",
+        "era": "ancient",
+        "scale": "epic",
+        "biome": "temperate"
+      },
+      "composition": {
+        "cameraHeight": "elevated",
+        "horizonPosition": 0.33,
+        "depthLayers": "deep",
+        "focalPoint": "center"
+      },
+      "atmosphere": {
+        "timeOfDay": "dusk",
+        "weather": "partly_cloudy",
+        "fogDensity": 0.4,
+        "visibility": 0.8
+      },
+      "lighting": {
+        "lightStyle": "cinematic",
+        "contrast": 0.8,
+        "godRays": 0.7,
+        "colorTemperature": "golden_hour",
+        "ambientOcclusion": 0.6
+      },
+      "style": {
+        "renderStyle": "matte_painting",
+        "detailLevel": "high",
+        "colorPalette": "cinematic"
+      },
+      "output": {
+        "resolution": "1920x1080",
+        "colorDepth": "16bit",
+        "format": "png",
+        "background": "solid"
+      }
+    },
+
+    "cyberpunk_city_street": {
+      "schemaVersion": "v1",
+      "assetType": "environment_concept",
+      "seed": 789123,
+      "scene": {
+        "type": "city",
+        "era": "futuristic",
+        "scale": "wide",
+        "biome": "urban"
+      },
+      "composition": {
+        "cameraHeight": "eye_level",
+        "horizonPosition": 0.66,
+        "depthLayers": "medium",
+        "focalPoint": "left_third"
+      },
+      "atmosphere": {
+        "timeOfDay": "night",
+        "weather": "rainy",
+        "fogDensity": 0.6,
+        "visibility": 0.5
+      },
+      "lighting": {
+        "lightStyle": "artificial",
+        "contrast": 0.9,
+        "godRays": 0.3,
+        "colorTemperature": "cool",
+        "ambientOcclusion": 0.8
+      },
+      "style": {
+        "renderStyle": "cinematic_realism",
+        "detailLevel": "ultra",
+        "colorPalette": "complementary"
+      },
+      "output": {
+        "resolution": "1920x1080",
+        "colorDepth": "16bit",
+        "format": "png",
+        "background": "solid"
+      }
+    },
+
+    "enchanted_forest_clearing": {
+      "schemaVersion": "v1",
+      "assetType": "environment_concept",
+      "seed": 321654,
+      "scene": {
+        "type": "forest",
+        "era": "medieval",
+        "scale": "intimate",
+        "biome": "magical"
+      },
+      "composition": {
+        "cameraHeight": "ground",
+        "horizonPosition": 0.4,
+        "depthLayers": "shallow",
+        "focalPoint": "center"
+      },
+      "atmosphere": {
+        "timeOfDay": "dawn",
+        "weather": "clear",
+        "fogDensity": 0.2,
+        "visibility": 0.9
+      },
+      "lighting": {
+        "lightStyle": "magical",
+        "contrast": 0.5,
+        "godRays": 0.8,
+        "colorTemperature": "warm",
+        "ambientOcclusion": 0.4
+      },
+      "style": {
+        "renderStyle": "stylized",
+        "detailLevel": "medium",
+        "colorPalette": "vibrant"
+      },
+      "output": {
+        "resolution": "1024x1024",
+        "colorDepth": "16bit",
+        "format": "png",
+        "background": "solid"
+      }
+    },
+
+    "space_station_interior": {
+      "schemaVersion": "v1",
+      "assetType": "environment_concept",
+      "seed": 987321,
+      "scene": {
+        "type": "sci_fi_interior",
+        "era": "futuristic",
+        "scale": "medium",
+        "biome": "artificial"
+      },
+      "composition": {
+        "cameraHeight": "eye_level",
+        "horizonPosition": 0.5,
+        "depthLayers": "medium",
+        "focalPoint": "background"
+      },
+      "atmosphere": {
+        "timeOfDay": "artificial",
+        "weather": "clear",
+        "fogDensity": 0.1,
+        "visibility": 1.0
+      },
+      "lighting": {
+        "lightStyle": "artificial",
+        "contrast": 0.7,
+        "godRays": 0.0,
+        "colorTemperature": "cool",
+        "ambientOcclusion": 0.9
+      },
+      "style": {
+        "renderStyle": "photorealistic",
+        "detailLevel": "architectural",
+        "colorPalette": "monochrome"
+      },
+      "output": {
+        "resolution": "1920x1080",
+        "colorDepth": "16bit",
+        "format": "png",
+        "background": "solid"
+      }
+    },
+
+    "desert_oasis_panorama": {
+      "schemaVersion": "v1",
+      "assetType": "environment_concept",
+      "seed": 654987,
+      "scene": {
+        "type": "desert",
+        "era": "ancient",
+        "scale": "panoramic",
+        "biome": "desert"
+      },
+      "composition": {
+        "cameraHeight": "aerial",
+        "horizonPosition": 0.25,
+        "depthLayers": "infinite",
+        "focalPoint": "right_third"
+      },
+      "atmosphere": {
+        "timeOfDay": "midday",
+        "weather": "clear",
+        "fogDensity": 0.0,
+        "visibility": 1.0
+      },
+      "lighting": {
+        "lightStyle": "natural",
+        "contrast": 0.9,
+        "godRays": 0.0,
+        "colorTemperature": "warm",
+        "ambientOcclusion": 0.3
+      },
+      "style": {
+        "renderStyle": "concept_art",
+        "detailLevel": "high",
+        "colorPalette": "analogous"
+      },
+      "output": {
+        "resolution": "2048x1024",
+        "colorDepth": "16bit",
+        "format": "png",
+        "background": "solid"
+      }
+    }
+  },
+
+  "validation_notes": {
+    "composition_rules": {
+      "rule_of_thirds": "horizonPosition values of 0.33 or 0.66 create dynamic compositions",
+      "camera_height_impact": "ground=immersive, eye_level=natural, aerial=strategic overview",
+      "depth_layers": "shallow=foreground focus, deep=environmental storytelling, infinite=vast landscapes"
+    },
+    "atmosphere_interactions": {
+      "time_weather_correlation": "dawn+clear=golden light, night+rainy=moody atmosphere, midday+clear=harsh shadows",
+      "fog_visibility_relationship": "High fog density should correlate with reduced visibility",
+      "biome_weather_constraints": "Desert biomes rarely have rainy weather, arctic biomes favor snow/clear"
+    },
+    "lighting_technical_notes": {
+      "god_rays_requirements": "Require atmospheric particles (fog/dust) to be visible",
+      "ambient_occlusion_usage": "Higher values for interior/enclosed spaces, lower for open landscapes",
+      "color_temperature_mapping": "warm=2700K-3500K, neutral=4000K-5000K, cool=5500K-7000K"
+    },
+    "style_performance_impact": {
+      "photorealistic": "Highest detail, longest generation time",
+      "concept_art": "Balanced detail and speed",
+      "stylized": "Faster generation, artistic interpretation",
+      "architectural": "Technical precision, moderate speed"
+    }
+  }
+}

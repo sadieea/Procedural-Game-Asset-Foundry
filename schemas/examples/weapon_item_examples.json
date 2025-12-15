@@ -1,0 +1,220 @@
+{
+  "examples": {
+    "legendary_sword": {
+      "schemaVersion": "v1",
+      "assetType": "weapon_item",
+      "seed": 987654,
+      "item": {
+        "category": "sword",
+        "rarity": "legendary",
+        "material": "mithril",
+        "styleTheme": "fantasy"
+      },
+      "form": {
+        "length": 0.8,
+        "thickness": 0.4,
+        "symmetry": "symmetrical",
+        "ornamentation": 0.9
+      },
+      "surface": {
+        "wearLevel": 0.1,
+        "scratches": "light",
+        "emissiveGlow": 0.7,
+        "patina": "none",
+        "inscriptions": "runes"
+      },
+      "camera": {
+        "mode": "hero_render",
+        "angle": 315,
+        "fov": 45,
+        "distance": "medium"
+      },
+      "lighting": {
+        "keyLight": "dramatic",
+        "contrast": 0.8,
+        "rimLight": "strong",
+        "reflections": 0.9
+      },
+      "background": {
+        "type": "radial_glow",
+        "shadow": "drop_shadow",
+        "particles": "magic"
+      },
+      "output": {
+        "resolution": "1024x1024",
+        "colorDepth": "16bit",
+        "format": "png",
+        "background": "transparent"
+      }
+    },
+
+    "common_iron_axe": {
+      "schemaVersion": "v1",
+      "assetType": "weapon_item",
+      "seed": 456789,
+      "item": {
+        "category": "axe",
+        "rarity": "common",
+        "material": "iron",
+        "styleTheme": "medieval"
+      },
+      "form": {
+        "length": 0.6,
+        "thickness": 0.7,
+        "symmetry": "symmetrical",
+        "ornamentation": 0.2
+      },
+      "surface": {
+        "wearLevel": 0.6,
+        "scratches": "heavy",
+        "emissiveGlow": 0.0,
+        "patina": "rust",
+        "inscriptions": "none"
+      },
+      "camera": {
+        "mode": "isometric",
+        "angle": 45,
+        "fov": 35,
+        "distance": "close"
+      },
+      "lighting": {
+        "keyLight": "studio",
+        "contrast": 0.5,
+        "rimLight": "subtle",
+        "reflections": 0.3
+      },
+      "background": {
+        "type": "studio_gray",
+        "shadow": "contact_shadow",
+        "particles": "none"
+      },
+      "output": {
+        "resolution": "512x512",
+        "colorDepth": "8bit",
+        "format": "png",
+        "background": "transparent"
+      }
+    },
+
+    "sci_fi_energy_rifle": {
+      "schemaVersion": "v1",
+      "assetType": "weapon_item",
+      "seed": 192837,
+      "item": {
+        "category": "gun",
+        "rarity": "epic",
+        "material": "crystal",
+        "styleTheme": "sci_fi"
+      },
+      "form": {
+        "length": 0.9,
+        "thickness": 0.3,
+        "symmetry": "asymmetrical",
+        "ornamentation": 0.6
+      },
+      "surface": {
+        "wearLevel": 0.2,
+        "scratches": "light",
+        "emissiveGlow": 0.8,
+        "patina": "none",
+        "inscriptions": "symbols"
+      },
+      "camera": {
+        "mode": "three_quarter",
+        "angle": 30,
+        "fov": 50,
+        "distance": "medium"
+      },
+      "lighting": {
+        "keyLight": "dramatic",
+        "contrast": 0.9,
+        "rimLight": "colored",
+        "reflections": 0.8
+      },
+      "background": {
+        "type": "gradient",
+        "shadow": "ambient_occlusion",
+        "particles": "sparks"
+      },
+      "output": {
+        "resolution": "1024x1024",
+        "colorDepth": "16bit",
+        "format": "png",
+        "background": "transparent"
+      }
+    },
+
+    "healing_potion": {
+      "schemaVersion": "v1",
+      "assetType": "weapon_item",
+      "seed": 564738,
+      "item": {
+        "category": "potion",
+        "rarity": "uncommon",
+        "material": "crystal",
+        "styleTheme": "fantasy"
+      },
+      "form": {
+        "length": 0.3,
+        "thickness": 0.5,
+        "symmetry": "symmetrical",
+        "ornamentation": 0.4
+      },
+      "surface": {
+        "wearLevel": 0.0,
+        "scratches": "none",
+        "emissiveGlow": 0.5,
+        "patina": "none",
+        "inscriptions": "symbols"
+      },
+      "camera": {
+        "mode": "flat_icon",
+        "angle": 0,
+        "fov": 35,
+        "distance": "close"
+      },
+      "lighting": {
+        "keyLight": "soft",
+        "contrast": 0.4,
+        "rimLight": "subtle",
+        "reflections": 0.7
+      },
+      "background": {
+        "type": "transparent",
+        "shadow": "drop_shadow",
+        "particles": "magic"
+      },
+      "output": {
+        "resolution": "512x512",
+        "colorDepth": "16bit",
+        "format": "png",
+        "background": "transparent"
+      }
+    }
+  },
+
+  "validation_notes": {
+    "rarity_scaling": {
+      "common": "Low ornamentation (0.0-0.3), minimal glow, heavy wear allowed",
+      "uncommon": "Medium ornamentation (0.2-0.5), subtle effects",
+      "rare": "Higher ornamentation (0.4-0.7), moderate glow effects",
+      "epic": "High ornamentation (0.6-0.9), strong visual effects",
+      "legendary": "Maximum ornamentation (0.8-1.0), intense glow and particles",
+      "artifact": "Unique forms, maximum effects, special materials only"
+    },
+    "material_constraints": {
+      "steel": "Reflections 0.6-0.9, patina: rust/tarnish allowed",
+      "crystal": "High reflections 0.8-1.0, emissive glow recommended",
+      "wood": "Low reflections 0.1-0.4, no metallic patina",
+      "bone": "Medium reflections 0.3-0.6, aged appearance",
+      "ethereal": "High glow required 0.7-1.0, particles recommended"
+    },
+    "camera_mode_usage": {
+      "flat_icon": "UI inventory items, minimal perspective",
+      "isometric": "Game world items, consistent perspective",
+      "hero_render": "Detailed showcase, dramatic angles allowed",
+      "three_quarter": "Balanced detail and recognition",
+      "profile": "Silhouette recognition, side view"
+    }
+  }
+}

@@ -1,0 +1,166 @@
+{
+  "examples": {
+    "warrior_portrait": {
+      "schemaVersion": "v1",
+      "assetType": "npc_portrait",
+      "seed": 123456,
+      "identity": {
+        "ageRange": "adult",
+        "genderPresentation": "masculine",
+        "ethnicity": "caucasian",
+        "archetype": "warrior"
+      },
+      "facialFeatures": {
+        "jawWidth": 0.8,
+        "cheekboneHeight": 0.7,
+        "noseLength": 0.6,
+        "eyeSize": 0.5,
+        "browIntensity": 0.8,
+        "scars": "battle",
+        "facialHair": "beard"
+      },
+      "expression": {
+        "emotion": "stern",
+        "intensity": 0.7
+      },
+      "camera": {
+        "angle": "three_quarter_left",
+        "fov": 50,
+        "headTilt": 0.1,
+        "distance": "medium"
+      },
+      "lighting": {
+        "keyLight": "dramatic",
+        "fillRatio": 0.3,
+        "rimLight": "strong",
+        "colorTemperature": "warm"
+      },
+      "style": {
+        "renderStyle": "photorealistic",
+        "detailLevel": "high",
+        "skinTexture": "weathered"
+      },
+      "output": {
+        "resolution": "1024x1024",
+        "colorDepth": "16bit",
+        "format": "png",
+        "background": "transparent"
+      }
+    },
+
+    "elven_mage": {
+      "schemaVersion": "v1",
+      "assetType": "npc_portrait",
+      "seed": 789012,
+      "identity": {
+        "ageRange": "adult",
+        "genderPresentation": "androgynous",
+        "ethnicity": "fantasy_elf",
+        "archetype": "mage"
+      },
+      "facialFeatures": {
+        "jawWidth": 0.3,
+        "cheekboneHeight": 0.8,
+        "noseLength": 0.4,
+        "eyeSize": 0.7,
+        "browIntensity": 0.3,
+        "scars": "none",
+        "facialHair": "none"
+      },
+      "expression": {
+        "emotion": "mysterious",
+        "intensity": 0.6
+      },
+      "camera": {
+        "angle": "three_quarter_right",
+        "fov": 65,
+        "headTilt": -0.1,
+        "distance": "close"
+      },
+      "lighting": {
+        "keyLight": "soft",
+        "fillRatio": 0.6,
+        "rimLight": "subtle",
+        "colorTemperature": "cool"
+      },
+      "style": {
+        "renderStyle": "stylized",
+        "detailLevel": "high",
+        "skinTexture": "smooth"
+      },
+      "output": {
+        "resolution": "1024x1024",
+        "colorDepth": "16bit",
+        "format": "png",
+        "background": "transparent"
+      }
+    },
+
+    "elderly_scholar": {
+      "schemaVersion": "v1",
+      "assetType": "npc_portrait",
+      "seed": 345678,
+      "identity": {
+        "ageRange": "elderly",
+        "genderPresentation": "feminine",
+        "ethnicity": "east_asian",
+        "archetype": "scholar"
+      },
+      "facialFeatures": {
+        "jawWidth": 0.4,
+        "cheekboneHeight": 0.5,
+        "noseLength": 0.5,
+        "eyeSize": 0.6,
+        "browIntensity": 0.4,
+        "scars": "none",
+        "facialHair": "none"
+      },
+      "expression": {
+        "emotion": "wise",
+        "intensity": 0.5
+      },
+      "camera": {
+        "angle": "frontal",
+        "fov": 75,
+        "headTilt": 0.0,
+        "distance": "medium"
+      },
+      "lighting": {
+        "keyLight": "natural",
+        "fillRatio": 0.7,
+        "rimLight": "none",
+        "colorTemperature": "neutral"
+      },
+      "style": {
+        "renderStyle": "painterly",
+        "detailLevel": "medium",
+        "skinTexture": "natural"
+      },
+      "output": {
+        "resolution": "1024x1024",
+        "colorDepth": "16bit",
+        "format": "png",
+        "background": "transparent"
+      }
+    }
+  },
+
+  "validation_notes": {
+    "required_fields": [
+      "All identity fields must be specified",
+      "Camera angle affects lighting calculations",
+      "Expression intensity modulates facial feature adjustments",
+      "Archetype influences default styling and accessories"
+    ],
+    "constraints": {
+      "numeric_ranges": "All numeric values must be within 0.0-1.0 range except fov (35-85) and headTilt (-0.3 to 0.3)",
+      "enum_validation": "All enum fields must match exactly - no partial matches or custom values",
+      "seed_uniqueness": "Seeds should be unique per generation for deterministic reproduction"
+    },
+    "frontend_integration": {
+      "slider_mapping": "Numeric fields map directly to UI sliders with appropriate ranges",
+      "dropdown_mapping": "Enum fields populate dropdown menus with human-readable labels",
+      "real_time_preview": "JSON updates live as user adjusts controls"
+    }
+  }
+}

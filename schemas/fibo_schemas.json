@@ -1,0 +1,571 @@
+{
+  "meta": {
+    "title": "Procedural Game Asset Foundry - FIBO JSON Schemas",
+    "version": "v1.0.0",
+    "description": "Production-ready, deterministic asset generation schemas for game development",
+    "author": "Procedural Game Asset Foundry",
+    "created": "2024-12-14",
+    "validation": "strict"
+  },
+
+  "baseSchema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "required": ["schemaVersion", "assetType", "seed", "output"],
+    "properties": {
+      "schemaVersion": {
+        "type": "string",
+        "enum": ["v1"],
+        "description": "Schema version for compatibility tracking"
+      },
+      "assetType": {
+        "type": "string",
+        "enum": ["npc_portrait", "weapon_item", "environment_concept"],
+        "description": "Asset category for generation pipeline routing"
+      },
+      "seed": {
+        "type": "integer",
+        "minimum": 1,
+        "maximum": 999999999,
+        "description": "Deterministic seed for reproducible generation"
+      },
+      "output": {
+        "type": "object",
+        "required": ["resolution", "colorDepth", "format", "background"],
+        "properties": {
+          "resolution": {
+            "type": "string",
+            "enum": ["512x512", "1024x1024", "1920x1080", "2048x2048"],
+            "description": "Output image dimensions"
+          },
+          "colorDepth": {
+            "type": "string",
+            "enum": ["8bit", "16bit", "32bit"],
+            "description": "Color depth for professional workflows"
+          },
+          "format": {
+            "type": "string",
+            "enum": ["png", "jpg", "webp", "exr"],
+            "description": "Output file format"
+          },
+          "background": {
+            "type": "string",
+            "enum": ["transparent", "solid", "gradient", "studio_gray"],
+            "description": "Background treatment"
+          }
+        }
+      }
+    }
+  },
+
+  "npcPortraitSchema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "NPC Portrait Generation Schema",
+    "description": "Deterministic character portrait generation for RPGs, dialogue systems, and UI cards",
+    "type": "object",
+    "allOf": [
+      { "$ref": "#/baseSchema" }
+    ],
+    "properties": {
+      "assetType": {
+        "const": "npc_portrait"
+      },
+      "identity": {
+        "type": "object",
+        "required": ["ageRange", "genderPresentation", "ethnicity", "archetype"],
+        "properties": {
+          "ageRange": {
+            "type": "string",
+            "enum": ["young", "adult", "middle_aged", "elderly"],
+            "description": "Character age category affecting facial structure"
+          },
+          "genderPresentation": {
+            "type": "string",
+            "enum": ["masculine", "feminine", "androgynous"],
+            "description": "Gender presentation for facial features"
+          },
+          "ethnicity": {
+            "type": "string",
+            "enum": ["east_asian", "south_asian", "african", "caucasian", "middle_eastern", "latino", "mixed", "fantasy_elf", "fantasy_dwarf", "fantasy_orc"],
+            "description": "Ethnic background for facial structure variation"
+          },
+          "archetype": {
+            "type": "string",
+            "enum": ["warrior", "mage", "rogue", "noble", "merchant", "scholar", "assassin", "paladin", "villager", "blacksmith"],
+            "description": "Character class affecting styling and accessories"
+          }
+        }
+      },
+      "facialFeatures": {
+        "type": "object",
+        "required": ["jawWidth", "cheekboneHeight", "noseLength", "eyeSize", "browIntensity", "scars"],
+        "properties": {
+          "jawWidth": {
+            "type": "number",
+            "minimum": 0.0,
+            "maximum": 1.0,
+            "description": "Jaw width: 0.0=narrow, 0.5=average, 1.0=wide"
+          },
+          "cheekboneHeight": {
+            "type": "number",
+            "minimum": 0.0,
+            "maximum": 1.0,
+            "description": "Cheekbone prominence: 0.0=low, 1.0=high"
+          },
+          "noseLength": {
+            "type": "number",
+            "minimum": 0.0,
+            "maximum": 1.0,
+            "description": "Nose length: 0.0=short, 1.0=long"
+          },
+          "eyeSize": {
+            "type": "number",
+            "minimum": 0.0,
+            "maximum": 1.0,
+            "description": "Eye size: 0.0=small, 1.0=large"
+          },
+          "browIntensity": {
+            "type": "number",
+            "minimum": 0.0,
+            "maximum": 1.0,
+            "description": "Eyebrow thickness: 0.0=thin, 1.0=thick"
+          },
+          "scars": {
+            "type": "string",
+            "enum": ["none", "light", "heavy", "ritual", "battle"],
+            "description": "Facial scarring level"
+          },
+          "facialHair": {
+            "type": "string",
+            "enum": ["none", "stubble", "beard", "mustache", "goatee", "full"],
+            "description": "Facial hair style"
+          }
+        }
+      },
+      "expression": {
+        "type": "object",
+        "required": ["emotion", "intensity"],
+        "properties": {
+          "emotion": {
+            "type": "string",
+            "enum": ["neutral", "stern", "friendly", "angry", "mysterious", "wise", "fierce", "sad", "determined"],
+            "description": "Primary facial expression"
+          },
+          "intensity": {
+            "type": "number",
+            "minimum": 0.0,
+            "maximum": 1.0,
+            "description": "Expression intensity: 0.0=subtle, 1.0=pronounced"
+          }
+        }
+      },
+      "camera": {
+        "type": "object",
+        "required": ["angle", "fov", "headTilt", "distance"],
+        "properties": {
+          "angle": {
+            "type": "string",
+            "enum": ["frontal", "three_quarter_left", "three_quarter_right", "profile_left", "profile_right"],
+            "description": "Camera angle relative to subject"
+          },
+          "fov": {
+            "type": "number",
+            "minimum": 35,
+            "maximum": 85,
+            "description": "Field of view in mm equivalent (35=wide, 85=telephoto)"
+          },
+          "headTilt": {
+            "type": "number",
+            "minimum": -0.3,
+            "maximum": 0.3,
+            "description": "Head tilt in radians (-0.3=left, 0.3=right)"
+          },
+          "distance": {
+            "type": "string",
+            "enum": ["close", "medium", "far"],
+            "description": "Camera distance affecting crop"
+          }
+        }
+      },
+      "lighting": {
+        "type": "object",
+        "required": ["keyLight", "fillRatio", "rimLight", "colorTemperature"],
+        "properties": {
+          "keyLight": {
+            "type": "string",
+            "enum": ["soft", "dramatic", "studio", "natural"],
+            "description": "Primary light quality"
+          },
+          "fillRatio": {
+            "type": "number",
+            "minimum": 0.0,
+            "maximum": 1.0,
+            "description": "Fill light ratio: 0.0=high contrast, 1.0=flat lighting"
+          },
+          "rimLight": {
+            "type": "string",
+            "enum": ["none", "subtle", "strong"],
+            "description": "Edge lighting intensity"
+          },
+          "colorTemperature": {
+            "type": "string",
+            "enum": ["warm", "neutral", "cool", "candlelight", "daylight", "moonlight"],
+            "description": "Light color temperature"
+          }
+        }
+      },
+      "style": {
+        "type": "object",
+        "required": ["renderStyle", "detailLevel", "skinTexture"],
+        "properties": {
+          "renderStyle": {
+            "type": "string",
+            "enum": ["photorealistic", "stylized", "painterly", "cel_shaded", "concept_art"],
+            "description": "Overall rendering approach"
+          },
+          "detailLevel": {
+            "type": "string",
+            "enum": ["low", "medium", "high", "ultra"],
+            "description": "Surface detail complexity"
+          },
+          "skinTexture": {
+            "type": "string",
+            "enum": ["smooth", "natural", "rough", "weathered", "fantasy"],
+            "description": "Skin surface treatment"
+          }
+        }
+      }
+    }
+  },
+
+  "weaponItemSchema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Weapon & Item Generation Schema",
+    "description": "Deterministic weapon and item generation for inventory systems and loot",
+    "type": "object",
+    "allOf": [
+      { "$ref": "#/baseSchema" }
+    ],
+    "properties": {
+      "assetType": {
+        "const": "weapon_item"
+      },
+      "item": {
+        "type": "object",
+        "required": ["category", "rarity", "material", "styleTheme"],
+        "properties": {
+          "category": {
+            "type": "string",
+            "enum": ["sword", "axe", "bow", "staff", "dagger", "hammer", "gun", "potion", "artifact", "shield", "armor", "accessory"],
+            "description": "Item type determining base form"
+          },
+          "rarity": {
+            "type": "string",
+            "enum": ["common", "uncommon", "rare", "epic", "legendary", "artifact", "unique"],
+            "description": "Rarity tier affecting visual complexity"
+          },
+          "material": {
+            "type": "string",
+            "enum": ["steel", "iron", "bronze", "silver", "gold", "crystal", "wood", "bone", "obsidian", "mithril", "adamantine", "ethereal"],
+            "description": "Primary material affecting surface properties"
+          },
+          "styleTheme": {
+            "type": "string",
+            "enum": ["fantasy", "sci_fi", "modern", "steampunk", "medieval", "ancient", "tribal", "elven", "dwarven", "orcish"],
+            "description": "Cultural/technological style theme"
+          }
+        }
+      },
+      "form": {
+        "type": "object",
+        "required": ["length", "thickness", "symmetry", "ornamentation"],
+        "properties": {
+          "length": {
+            "type": "number",
+            "minimum": 0.1,
+            "maximum": 1.0,
+            "description": "Item length scale: 0.1=dagger, 1.0=greatsword"
+          },
+          "thickness": {
+            "type": "number",
+            "minimum": 0.1,
+            "maximum": 1.0,
+            "description": "Item thickness: 0.1=thin, 1.0=bulky"
+          },
+          "symmetry": {
+            "type": "string",
+            "enum": ["symmetrical", "asymmetrical", "curved", "twisted"],
+            "description": "Overall form symmetry"
+          },
+          "ornamentation": {
+            "type": "number",
+            "minimum": 0.0,
+            "maximum": 1.0,
+            "description": "Decorative detail level: 0.0=plain, 1.0=ornate"
+          }
+        }
+      },
+      "surface": {
+        "type": "object",
+        "required": ["wearLevel", "scratches", "emissiveGlow", "patina"],
+        "properties": {
+          "wearLevel": {
+            "type": "number",
+            "minimum": 0.0,
+            "maximum": 1.0,
+            "description": "Wear and aging: 0.0=pristine, 1.0=heavily worn"
+          },
+          "scratches": {
+            "type": "string",
+            "enum": ["none", "light", "heavy", "battle_worn", "ritual"],
+            "description": "Surface scratch pattern"
+          },
+          "emissiveGlow": {
+            "type": "number",
+            "minimum": 0.0,
+            "maximum": 1.0,
+            "description": "Magical glow intensity: 0.0=none, 1.0=bright"
+          },
+          "patina": {
+            "type": "string",
+            "enum": ["none", "light", "heavy", "verdigris", "rust", "tarnish"],
+            "description": "Surface oxidation/aging"
+          },
+          "inscriptions": {
+            "type": "string",
+            "enum": ["none", "runes", "text", "symbols", "geometric"],
+            "description": "Surface markings or text"
+          }
+        }
+      },
+      "camera": {
+        "type": "object",
+        "required": ["mode", "angle", "fov", "distance"],
+        "properties": {
+          "mode": {
+            "type": "string",
+            "enum": ["isometric", "flat_icon", "hero_render", "three_quarter", "profile"],
+            "description": "Camera presentation mode"
+          },
+          "angle": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 360,
+            "description": "Rotation angle in degrees"
+          },
+          "fov": {
+            "type": "number",
+            "minimum": 25,
+            "maximum": 75,
+            "description": "Field of view in degrees"
+          },
+          "distance": {
+            "type": "string",
+            "enum": ["close", "medium", "far"],
+            "description": "Camera distance for framing"
+          }
+        }
+      },
+      "lighting": {
+        "type": "object",
+        "required": ["keyLight", "contrast", "rimLight", "reflections"],
+        "properties": {
+          "keyLight": {
+            "type": "string",
+            "enum": ["studio", "dramatic", "soft", "harsh", "ambient"],
+            "description": "Primary lighting setup"
+          },
+          "contrast": {
+            "type": "number",
+            "minimum": 0.0,
+            "maximum": 1.0,
+            "description": "Lighting contrast: 0.0=flat, 1.0=high contrast"
+          },
+          "rimLight": {
+            "type": "string",
+            "enum": ["none", "subtle", "strong", "colored"],
+            "description": "Edge lighting treatment"
+          },
+          "reflections": {
+            "type": "number",
+            "minimum": 0.0,
+            "maximum": 1.0,
+            "description": "Surface reflection intensity"
+          }
+        }
+      },
+      "background": {
+        "type": "object",
+        "required": ["type", "shadow", "particles"],
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": ["transparent", "studio_gray", "radial_glow", "solid_color", "gradient"],
+            "description": "Background treatment"
+          },
+          "shadow": {
+            "type": "string",
+            "enum": ["none", "drop_shadow", "contact_shadow", "ambient_occlusion"],
+            "description": "Shadow type"
+          },
+          "particles": {
+            "type": "string",
+            "enum": ["none", "dust", "sparks", "magic", "smoke"],
+            "description": "Atmospheric particles"
+          }
+        }
+      }
+    }
+  },
+
+  "environmentConceptSchema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Environment Concept Generation Schema",
+    "description": "Deterministic environment concept generation for worldbuilding and level design",
+    "type": "object",
+    "allOf": [
+      { "$ref": "#/baseSchema" }
+    ],
+    "properties": {
+      "assetType": {
+        "const": "environment_concept"
+      },
+      "scene": {
+        "type": "object",
+        "required": ["type", "era", "scale", "biome"],
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": ["city", "village", "forest", "desert", "mountains", "ruins", "dungeon", "castle", "temple", "sci_fi_interior", "space_station", "underwater"],
+            "description": "Primary environment type"
+          },
+          "era": {
+            "type": "string",
+            "enum": ["prehistoric", "ancient", "medieval", "renaissance", "industrial", "modern", "futuristic", "post_apocalyptic"],
+            "description": "Technological/historical era"
+          },
+          "scale": {
+            "type": "string",
+            "enum": ["intimate", "medium", "wide", "epic", "panoramic"],
+            "description": "Scene scope and scale"
+          },
+          "biome": {
+            "type": "string",
+            "enum": ["temperate", "tropical", "arctic", "desert", "swamp", "volcanic", "alien", "magical"],
+            "description": "Environmental biome characteristics"
+          }
+        }
+      },
+      "composition": {
+        "type": "object",
+        "required": ["cameraHeight", "horizonPosition", "depthLayers", "focalPoint"],
+        "properties": {
+          "cameraHeight": {
+            "type": "string",
+            "enum": ["ground", "eye_level", "elevated", "aerial", "birds_eye"],
+            "description": "Camera elevation relative to scene"
+          },
+          "horizonPosition": {
+            "type": "number",
+            "minimum": 0.0,
+            "maximum": 1.0,
+            "description": "Horizon line position: 0.0=bottom, 0.33=lower third, 0.66=upper third, 1.0=top"
+          },
+          "depthLayers": {
+            "type": "string",
+            "enum": ["shallow", "medium", "deep", "infinite"],
+            "description": "Depth complexity and layering"
+          },
+          "focalPoint": {
+            "type": "string",
+            "enum": ["center", "left_third", "right_third", "foreground", "background"],
+            "description": "Primary focal point placement"
+          }
+        }
+      },
+      "atmosphere": {
+        "type": "object",
+        "required": ["timeOfDay", "weather", "fogDensity", "visibility"],
+        "properties": {
+          "timeOfDay": {
+            "type": "string",
+            "enum": ["dawn", "morning", "midday", "afternoon", "dusk", "night", "midnight"],
+            "description": "Time of day affecting lighting"
+          },
+          "weather": {
+            "type": "string",
+            "enum": ["clear", "partly_cloudy", "overcast", "foggy", "rainy", "stormy", "snowy", "sandstorm"],
+            "description": "Weather conditions"
+          },
+          "fogDensity": {
+            "type": "number",
+            "minimum": 0.0,
+            "maximum": 1.0,
+            "description": "Atmospheric fog density: 0.0=clear, 1.0=heavy fog"
+          },
+          "visibility": {
+            "type": "number",
+            "minimum": 0.1,
+            "maximum": 1.0,
+            "description": "Atmospheric visibility range"
+          }
+        }
+      },
+      "lighting": {
+        "type": "object",
+        "required": ["lightStyle", "contrast", "godRays", "colorTemperature", "ambientOcclusion"],
+        "properties": {
+          "lightStyle": {
+            "type": "string",
+            "enum": ["soft", "dramatic", "cinematic", "natural", "artificial", "magical"],
+            "description": "Overall lighting approach"
+          },
+          "contrast": {
+            "type": "number",
+            "minimum": 0.0,
+            "maximum": 1.0,
+            "description": "Lighting contrast ratio"
+          },
+          "godRays": {
+            "type": "number",
+            "minimum": 0.0,
+            "maximum": 1.0,
+            "description": "Volumetric light ray intensity"
+          },
+          "colorTemperature": {
+            "type": "string",
+            "enum": ["warm", "neutral", "cool", "golden_hour", "blue_hour", "artificial"],
+            "description": "Light color temperature"
+          },
+          "ambientOcclusion": {
+            "type": "number",
+            "minimum": 0.0,
+            "maximum": 1.0,
+            "description": "Ambient occlusion strength"
+          }
+        }
+      },
+      "style": {
+        "type": "object",
+        "required": ["renderStyle", "detailLevel", "colorPalette"],
+        "properties": {
+          "renderStyle": {
+            "type": "string",
+            "enum": ["photorealistic", "cinematic_realism", "matte_painting", "stylized", "concept_art", "impressionistic"],
+            "description": "Overall rendering style"
+          },
+          "detailLevel": {
+            "type": "string",
+            "enum": ["sketch", "medium", "high", "ultra", "architectural"],
+            "description": "Environmental detail complexity"
+          },
+          "colorPalette": {
+            "type": "string",
+            "enum": ["natural", "desaturated", "vibrant", "monochrome", "complementary", "analogous", "cinematic"],
+            "description": "Color palette approach"
+          }
+        }
+      }
+    }
+  }
+}
